@@ -19,9 +19,12 @@ You must modify your library paths to run BSFG from a local repository:
 
 Option 1: add the local path to .libPaths()
 ```
-.libPaths(c(.libPaths(),"~/R/x86_64-pc-linux-gnu-library/3.3"))
+.libPaths(c("~/R/x86_64-pc-linux-gnu-library/3.3", .libPaths()))
 library(BSFG)
 ```
+
+The string `"~/R/x86_64-pc-linux-gnu-library/3.3"` is my path from my home directory to my locally installed R packages. It goes before `.libPaths()` so R looks there first.
+The benefit to this is that it's version controlled - at least, because I am lazy and won't update the local until something breaks. (Note to self: be more diligent about versions of software used in R code. Explore the session.info())
 
 Option 2: (have not tried)
 ```
