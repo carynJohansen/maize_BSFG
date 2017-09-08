@@ -9,9 +9,8 @@ library(ggplot2)
 library(tidyverse)
 library(flashClust)
 
-# ------------------ #
+# ------------------ 
 # Data
-# ------------------ #
 
 exp <- read.table("~/Box Sync/UCD/RRI/maize_genomics_project/data/eQTL/maize_414_expressedFPKM_names.txt", sep=",", header=T, row.names = 1)
 
@@ -24,16 +23,13 @@ head(exp2)
 colnames(exp2) <- c("Line", "Gene", "FPKM")
 str(exp2)
 
-ggplot(exp2) + geom_boxplot(aes(x=Line, y=FPKM))
-# not normal!
-
 ggplot(exp2, aes(x=FPKM, color=Line)) + geom_density() + theme(legend.position="none")
 
-#yeah, not normal!
+#yeah, not normal
 
-# ------------------ #
+# ------------------ 
 # Normalize
-# ------------------ #
+
 
 # convert to log scores
 
@@ -66,9 +62,9 @@ expZ <- t(exp_z)
 dim(expZ)
 expZ[1:5,1:5]
 
-# ------------------ #
+# ------------------ 
 # WGCNA
-# ------------------ #
+
 
 #start with subset of data, just to get this going. Come back and run all the data
 
