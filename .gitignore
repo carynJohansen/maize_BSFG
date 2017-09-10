@@ -1,3 +1,6 @@
+# Ignore slurm logs
+logs/
+
 # Ignore data
 data/
 

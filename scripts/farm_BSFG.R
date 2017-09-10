@@ -15,14 +15,15 @@ setwd(folder)
 
 .libPaths(c("~/R/x86_64-pc-linux-gnu-library/3.3", .libPaths()))
 library(BSFG)
-library(MCMC)
+#install.packages("MCMC")
+#library(MCMC)
 
 # --------------
 # Data 
 
-K <- read.table("/home/caryn89/rotations/maize_genomics/data/BSFG_input/ZeaGBSv27_sF.sXX.txt")
-Y <- read.table("/home/caryn89/rotations/maize_genomics/data/BSFG_input/maize_414_expressedFPKM.bb", sep=",")
-k_lines <- ("/home/caryn89/rotations/maize_genomics/data/BSFG_input/ZeaGBSv27_414Exp_lines.txt")
+K <- read.table("/home/caryn89/Projects/maize_BSFG/data/processed/ZeaGBSv27_sF.sXX.txt")
+Y <- read.table("/home/caryn89/Projects/maize_BSFG/data/processed/maize_414_expressedFPKM.bb", sep=",")
+k_lines <- read.table("/home/caryn89/Projects/maize_BSFG/data/processed/ZeaGBSv27_503Exp_lines.txt")
 
 # organize data
 colnames(k_lines) <- "Line"
