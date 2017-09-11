@@ -34,6 +34,14 @@ withr::with_libpaths(my_local_library,install_git(BSFG_path,branch = 'develop',s
 ```
 This appears to be working, as of Sept. 11, 2017.
 
+To install, I started an interactive session (`srun -t 5:00:00`) and then I used my `install-BSFG.R` script, found in the scripts directory.
+
+```
+$ Rscript scripts/install_BSFG.R
+```
+
+This took less than 20 minutes. Leave the interactive session using control-D.
+
 ## Loading BSFG on Farm
 
 You must modify your library paths to run BSFG from a local repository:
