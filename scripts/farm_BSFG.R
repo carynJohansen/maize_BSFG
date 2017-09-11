@@ -7,7 +7,7 @@ setwd("/home/caryn89/Projects/maize_BSFG")
 # set daily working directory
 
 rep = Sys.Date()
-folder = sprintf('analysis/Rep_%s',rep)
+folder = sprintf('analysis/Rep_%s',rep, '_2')
 try(dir.create(folder))
 setwd(folder)
 
