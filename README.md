@@ -10,7 +10,7 @@ library(devtools)
 devtools::install_github('deruncie/SparseFactorMixedModel',ref='develop',subdir='BSFG')
 ```
 
-Also requires `MCMC` package.
+May also require a package for running an MCMC.
 
 ## Installing BSFG on Farm
 
