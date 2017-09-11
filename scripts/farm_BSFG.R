@@ -93,6 +93,8 @@ BSFG_state = BSFG_init(Y,
 #------------------
 # MCMC
 
+#Ran it with n_samples = 100 for 1:70 loops. Put the time in as 24 hours, but this was going to take more that 24 hours. 
+# it look 16 loops about 6 hours, at a rate of 2.6 loops per hour. If you only save the BSFG_state at the end of the run, it will not complete.
 
 n_samples = 100;  # how many samples to collect at once?
 for(i  in 1:70) {
