@@ -27,10 +27,12 @@ So to install BSFG on Farm is similar to my local setup, but I have to change th
 
 library(git2r)
 library(devtools)
-devtools::install_github('deruncie/SparseFactorMixedModel',ref='develop',subdir='BSFG')
-```
 
-This requires testing still.
+BSFG_path <- 'https://github.com/deruncie/SparseFactorMixedModel'
+my_local_library <- '~/R/x86_64-pc-linux-gnu-library/3.3'
+withr::with_libpaths(my_local_library,install_git(BSFG_path,branch = 'develop',subdir = 'BSFG'))
+```
+This appears to be working, as of Sept. 11, 2017.
 
 ## Loading BSFG on Farm
 
