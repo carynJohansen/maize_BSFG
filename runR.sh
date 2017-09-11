@@ -4,7 +4,7 @@
 #SBATCH -o /home/caryn89/Projects/maize_BSFG/logs/R_out_%j.out
 #SBATCH -e /home/caryn89/Projects/maize_BSFG/logs/R_out_%j.out
 #SBATCH -J R-BSFG
-#SBATCH -t 60:00:00
+#SBATCH -t 35:00:00
 #SBATCH --mem=60000
 
 set -e
