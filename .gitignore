@@ -4,6 +4,9 @@ logs/
 # Ignore data
 data/
 
+# Ignore posterior data sets
+Posterior/
+
 # History files
 .Rhistory
 .Rapp.history
