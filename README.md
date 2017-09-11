@@ -30,7 +30,7 @@ library(devtools)
 devtools::install_github('deruncie/SparseFactorMixedModel',ref='develop',subdir='BSFG')
 ```
 
-This should work, but requires testing.
+This requires testing still.
 
 ## Loading BSFG on Farm
 
