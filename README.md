@@ -10,7 +10,7 @@ library(devtools)
 devtools::install_github('deruncie/SparseFactorMixedModel',ref='develop',subdir='BSFG')
 ```
 
-Also requires `MCMC` package.
+May also require a package for running an MCMC.
 
 ## Installing BSFG on Farm
 
@@ -27,10 +27,20 @@ So to install BSFG on Farm is similar to my local setup, but I have to change th
 
 library(git2r)
 library(devtools)
-devtools::install_github('deruncie/SparseFactorMixedModel',ref='develop',subdir='BSFG')
+
+BSFG_path <- 'https://github.com/deruncie/SparseFactorMixedModel'
+my_local_library <- '~/R/x86_64-pc-linux-gnu-library/3.3'
+withr::with_libpaths(my_local_library,install_git(BSFG_path,branch = 'develop',subdir = 'BSFG'))
+```
+This appears to be working, as of Sept. 11, 2017.
+
+To install, I started an interactive session (`srun -t 5:00:00`) and then I used my `install-BSFG.R` script, found in the scripts directory.
+
+```
+$ Rscript scripts/install_BSFG.R
 ```
 
-This requires testing still.
+This took less than 20 minutes. Leave the interactive session using control-D.
 
 ## Loading BSFG on Farm
 
