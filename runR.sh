@@ -1,10 +1,11 @@
 #!/bin/bash -l
 
-#SBATCH -D /home/caryn89/maize_BSFG
-#SBATCH -o /home/caryn89/maize_BSFG/logs/R_out_%j.out
-#SBATCH -e /home/caryn89/maize_BSFG/logs/R_out_%j.out
+#SBATCH -D /home/caryn89/Projects/maize_BSFG
+#SBATCH -o /home/caryn89/Projects/maize_BSFG/logs/R_out_%j.out
+#SBATCH -e /home/caryn89/Projects/maize_BSFG/logs/R_out_%j.out
 #SBATCH -J R-BSFG
 #SBATCH -t 24:00:00
+#SBATCH --mem=60000
 
 set -e
 set -o

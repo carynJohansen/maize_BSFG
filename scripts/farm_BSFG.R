@@ -2,7 +2,7 @@
 
 # working directory
 
-setwd("/home/caryn89/maize_BSFG")
+setwd("/home/caryn89/Projects/maize_BSFG")
 
 # set daily working directory
 
@@ -51,6 +51,8 @@ run_parameters = BSFG_control(
   h2_step_size = NULL,
   burn = 1000
 )
+
+run_parameters
 
 #--------------------
 #Set the prior hyperparameters of the BSFG model
