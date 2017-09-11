@@ -25,6 +25,10 @@ K <- read.table("/home/caryn89/Projects/maize_BSFG/data/processed/ZeaGBSv27_sF.s
 Y <- read.table("/home/caryn89/Projects/maize_BSFG/data/processed/maize_414_expressedFPKM.bb", sep=",")
 k_lines <- read.table("/home/caryn89/Projects/maize_BSFG/data/processed/ZeaGBSv27_503Exp_lines.txt")
 
+dim(K)
+dim(Y)
+dim(k_lines)
+
 # organize data
 colnames(k_lines) <- "Line"
 rownames(K) <- k_lines[,1]
@@ -105,6 +109,7 @@ for(i  in 1:70) {
   BSFG_state = save_posterior_chunk(BSFG_state)  # save any accumulated posterior samples in the database to release memory
   print(BSFG_state) # print status of current chain
   plot(BSFG_state) # make some diagnostic plots. These are saved in a pdf booklet: diagnostic_plots.pdf
+  save(BSFG_state, "current_loop.RData")
 }
 
 save(BSFG_state, "postrun.RData")
