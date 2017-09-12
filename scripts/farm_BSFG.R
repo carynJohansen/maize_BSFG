@@ -6,10 +6,12 @@ setwd("/home/caryn89/Projects/maize_BSFG")
 
 # set daily working directory
 
-rep = Sys.Date()
-folder = sprintf('analysis/Rep2_%s',rep)
+rep = format(Sys.Date(), "%d-%m-%Y")
+folder = sprintf('analysis/rep-%s', rep)
 try(dir.create(folder))
 setwd(folder)
+
+print(folder)
 
 # Libraries
 
@@ -111,7 +113,7 @@ for(i  in 1:70) {
   BSFG_state = save_posterior_chunk(BSFG_state)  # save any accumulated posterior samples in the database to release memory
   print(BSFG_state) # print status of current chain
   plot(BSFG_state) # make some diagnostic plots. These are saved in a pdf booklet: diagnostic_plots.pdf
-  save(BSFG_state, "current_loop.RData")
+  save(BSFG_state,file="current_loop.RData")
 }
 
 save(BSFG_state, "postrun.RData")
