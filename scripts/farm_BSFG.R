@@ -116,5 +116,5 @@ for(i  in 1:70) {
   save(BSFG_state,file="current_loop.RData")
 }
 
-save(BSFG_state, "postrun.RData")
+save(BSFG_state, file="postrun.RData")
 
