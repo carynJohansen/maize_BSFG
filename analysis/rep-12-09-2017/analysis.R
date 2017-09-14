@@ -2,6 +2,8 @@
 
 # Pathway for this analysis on farm, where is ran, is: /home/caryn89/Projects/maize_BSFG/analysis/rep-12-09-2017
 
+setwd("/home/caryn89/Projects/maize_BSFG/analysis/rep-12-09-2017")
+
 # Libraries
 .libPaths(c("~/R/x86_64-pc-linux-gnu-library/3.3", .libPaths()))
 library(BSFG)
