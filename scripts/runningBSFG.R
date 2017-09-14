@@ -38,7 +38,7 @@ rownames(K_mod) = rownames(K)
 # set daily working directory
 
 rep = Sys.Date()
-folder = sprintf('Rep_%s',rep)
+folder = sprintf('analysis/Rep_%s',rep)
 try(dir.create(folder))
 setwd(folder)
 
