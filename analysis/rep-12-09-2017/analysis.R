@@ -17,6 +17,7 @@ load("current_loop.RData")
 # reload the whole database of posterior samples
 
 #This is too big for farm with a membory limit. Going to have to find a way around this.
+
 #BSFG_state$Posterior <- reload_Posterior(BSFG_state)
 
 #load Posterior lambda array
