@@ -69,3 +69,14 @@ This could perhaps be done on a more permanent basis by altering an .Rprofile fi
 
 Dan pushes changes quite a bit, so it's a good idea to check with him to see what's he had changed before updating.
 
+The current BSFG (as of November 27, 2017) has an `reinstall_BSFG()` function. To get to it, update BSFG:
+
+```
+.libPaths('~/R/x86_64-pc-linux-gnu-library/3.3/')
+reinstall_BSFG = function() {
+    devtools::install_github('deruncie/SparseFactorMixedModel',subdir='BSFG',ref='one_general_model')
+}
+reinstall_BSFG()
+```
+
+
