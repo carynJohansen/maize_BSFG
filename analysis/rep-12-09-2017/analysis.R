@@ -16,33 +16,34 @@ load("current_loop.RData")
 
 # reload the whole database of posterior samples
 
-BSFG_state$Posterior <- reload_Posterior(BSFG_state)
+#This is too big for farm with a membory limit. Going to have to find a way around this.
+#BSFG_state$Posterior <- reload_Posterior(BSFG_state)
 
 #load Posterior lambda array
-Lambda <- BSFG_state$Posterior$Lambda
-dim(Lambda)
+#Lambda <- BSFG_state$Posterior$Lambda
+#dim(Lambda)
 # examine the factor loadings across all the Posterior
 
-g1 <- Lambda[,1,] #the factor loadings for one gene across all Posteriors
-g1_m <- melt(g1)
+#g1 <- Lambda[,1,] #the factor loadings for one gene across all Posteriors
+#g1_m <- melt(g1)
 
-summary(g1_m)
-colnames(g1_m) <- c("posterior", "factor", "loading")
+#summary(g1_m)
+#colnames(g1_m) <- c("posterior", "factor", "loading")
 
-pdf(file="gene1.pdf")
-ggplot(g1_m, aes(x=factor, y=loading, color=posterior)) + geom_point()
-dev.off()
+#pdf(file="gene1.pdf")
+#ggplot(g1_m, aes(x=factor, y=loading, color=posterior)) + geom_point()
+#dev.off()
 
 # Visualize first Posterior
 
-f <- Lambda[1,,]
-f <- melt(f)
-colnames(f) <- c("gene", "factor", "loading")
-f$factor <- as.factor(f$factor)
+#f <- Lambda[1,,]
+#f <- melt(f)
+#colnames(f) <- c("gene", "factor", "loading")
+#f$factor <- as.factor(f$factor)
 
-pdf("posterior1_lambda.pdf")
-ggplot(f, aes(x=factor, y=loading)) + geom_boxplot()
-dev.off()
+#pdf("posterior1_lambda.pdf")
+#ggplot(f, aes(x=factor, y=loading)) + geom_boxplot()
+#dev.off()
 
 # Visualize last Posterior
 
