@@ -53,9 +53,10 @@ run_parameters = BSFG_control(
   #sampler = 'general_BSFG',
   simulation   = FALSE,
   scale_Y = TRUE, # internally rescales all the Y to have a mean value, z-score
-  h2_divisions = 50,
+  h2_divisions = 2,
   h2_step_size = NULL,
-  burn = 1000
+  burn = 10000,
+  thin = 10
 )
 
 run_parameters
@@ -63,20 +64,20 @@ run_parameters
 #--------------------
 #Set the prior hyperparameters of the BSFG model
 
-priors = BSFG_priors(
-  fixed_var = list(V = 1,     nu = 3),
+#priors = BSFG_priors(
+#  fixed_var = list(V = 1,     nu = 3),
   # tot_Y_var = list(V = 0.5,   nu = 3),
-  tot_Y_var = list(V = 0.5,   nu = 5),
-  tot_F_var = list(V = 18/20, nu = 20),
-  delta_1   = list(shape = 2.1,  rate = 1/20),
-  delta_2   = list(shape = 3, rate = 1),
-  Lambda_df = 3,
-  B_df      = 3,
-  B_F_df    = 3,
-  h2_priors_resids_fun = function(h2s,n) 1,#pmax(pmin(ddirichlet(c(h2s,1-sum(h2s)),rep(2,length(h2s)+1)),10),1e-10),
-  h2_priors_factors_fun = function(h2s,n) 1#ifelse(h2s == 0,n,n/(n-1))
-)
-
+#  tot_Y_var = list(V = 0.5,   nu = 5),
+#  tot_F_var = list(V = 18/20, nu = 20),
+#  delta_1   = list(shape = 2.1,  rate = 1/20),
+#  delta_2   = list(shape = 3, rate = 1),
+#  Lambda_df = 3,
+#  B_df      = 3,
+#  B_F_df    = 3,
+#  h2_priors_resids_fun = function(h2s,n) 1,#pmax(pmin(ddirichlet(c(h2s,1-sum(h2s)),rep(2,length(h2s)+1)),10),1e-10),
+#  h2_priors_factors_fun = function(h2s,n) 1#ifelse(h2s == 0,n,n/(n-1))
+#)
+priors <- BSFG_priors()
 
 #----------------------
 # Construct model
@@ -106,7 +107,7 @@ for(i  in 1:70) {
   # set of commands to run during burn-in period to help chain converge
   if(BSFG_state$current_state$nrun < BSFG_state$run_parameters$burn - 100) {
     BSFG_state = reorder_factors(BSFG_state) # Factor order doesn't "mix" well in the MCMC. We can help it by manually re-ordering from biggest to smallest
-    # BSFG_state$current_state = update_k(BSFG_state) # use to drop insignificant factors
+    #BSFG_state$current_state = update_k(BSFG_state) # use to drop insignificant factors
     BSFG_state$run_parameters$burn = max(BSFG_state$run_parameters$burn,BSFG_state$current_state$nrun+100) # if you made changes, set a new burn-in period
     print(BSFG_state$run_parameters$burn)
   }
