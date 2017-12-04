@@ -6,11 +6,10 @@
 #library(devtools)
 #devtools::install_github('deruncie/SparseFactorMixedModel',ref='develop',subdir='BSFG')
 library(BSFG)
-library(MCMCpack)
 
 #----------------
 # set working directory
-setwd("~/Box Sync/Projects/BSFG/maize/")
+setwd("~/Box Sync/Projects/maize_BSFG")
 
 #----------------
 # Load Data
@@ -52,7 +51,8 @@ run_parameters = BSFG_control(
   scale_Y = TRUE, # internally rescales all the Y to have a mean value, z-score
   h2_divisions = 2,
   h2_step_size = NULL,
-  burn = 100
+  burn = 10000,
+  thin = 10
 )
 
 #--------------------
@@ -90,18 +90,18 @@ BSFG_state = BSFG_init(Y,
 # MCMC
 
 
-n_samples = 1;  # how many samples to collect at once?
-for(i  in 1:70) {
+n_samples = 100;  # how many samples to collect at once?
+for(i  in 1:120) {
   print(sprintf('Run %d',i))
   BSFG_state = sample_BSFG(BSFG_state,n_samples,grainSize=1)  # run MCMC chain n_samples iterations. grainSize is a paramter for parallelization (smaller = more parallelization)
   
   # set of commands to run during burn-in period to help chain converge
-  #if(BSFG_state$current_state$nrun < BSFG_state$run_parameters$burn - 100) {
-  #  BSFG_state = reorder_factors(BSFG_state) # Factor order doesn't "mix" well in the MCMC. We can help it by manually re-ordering from biggest to smallest
-  #  # BSFG_state$current_state = update_k(BSFG_state) # use to drop insignificant factors
-  #  BSFG_state$run_parameters$burn = max(BSFG_state$run_parameters$burn,BSFG_state$current_state$nrun+100) # if you made changes, set a new burn-in period
-  #  print(BSFG_state$run_parameters$burn)
-  #}
+  if(BSFG_state$current_state$nrun < BSFG_state$run_parameters$burn) {
+    BSFG_state = reorder_factors(BSFG_state) # Factor order doesn't "mix" well in the MCMC. We can help it by manually re-ordering from biggest to smallest
+    # BSFG_state$current_state = update_k(BSFG_state) # use to drop insignificant factors
+    BSFG_state$run_parameters$burn = max(BSFG_state$run_parameters$burn,BSFG_state$current_state$nrun+100) # if you made changes, set a new burn-in period
+    print(BSFG_state$run_parameters$burn)
+}
   BSFG_state = save_posterior_chunk(BSFG_state)  # save any accumulated posterior samples in the database to release memory
   print(BSFG_state) # print status of current chain
   plot(BSFG_state) # make some diagnostic plots. These are saved in a pdf booklet: diagnostic_plots.pdf
