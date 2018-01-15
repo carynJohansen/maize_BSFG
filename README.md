@@ -1,5 +1,10 @@
 # Running BSFG with maize RNA-Seq expression data
 
+* Author: Caryn Johansen
+* Contact: caryn.k.johansen@gmail.com
+
+Last updated: January 15, 2018
+
 ## Installing BSFG locally
 
 BSFG: https://github.com/deruncie/SparseFactorMixedModel
